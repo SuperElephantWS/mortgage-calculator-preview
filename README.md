@@ -143,31 +143,83 @@ All of this lives in `src/lib/` (see the file table above) and is pinned by the 
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Run Locally
+
+From the `mortgage_calculator` directory, run:
 
 ```bash
-npm install
-
-# Development server (Vite)
-npm run dev
-
-# Run the calculation test suite (Vitest)
-npm test
-
-# Production build → dist/
-npm run build
-
-# Serve the production build locally
-npm run preview
+./run.sh
 ```
 
-Then visit the URL printed by the dev/preview server.
+Open the **Local** URL printed by Vite (usually **<http://127.0.0.1:5173/>**).
+If port 5173 is busy, Vite automatically selects the next available port,
+such as 5174. The script starts both Vite and the embedded Flask weather
+server. Press **Ctrl+C** to stop both.
+
+Requires Node.js (see Requirements above), npm, Python 3, and the sibling
+`weather_app` directory. On first use, it installs missing Node dependencies
+and creates the weather Python environment and installs its dependencies;
+these downloads require internet access. For live weather, set
+`API_KEY=your_openweathermap_key` in `weather_app/.env`.
+
+The weather iframe requires port **5001**. If that port is already in use,
+stop the existing weather server before running the script.
+
+### Manual startup
+
+From the `web_devel` workspace directory, start the mortgage website:
+
+```bash
+cd mortgage_calculator
+npm ci
+npm run dev -- --host 127.0.0.1 --port 5173
+```
+
+Open **<http://127.0.0.1:5173/>** in your browser. If port 5173 is already
+in use, open the URL printed by Vite. Leave the terminal running; press
+**Ctrl+C** to stop the server. On later runs, you only need the `npm run dev`
+command from the `mortgage_calculator` directory.
+
+### Start the embedded weather page
+
+The weather iframe requires a separate Flask server on port **5001**.
+In a **second terminal**, starting from the `web_devel` workspace directory:
+
+```bash
+cd weather_app
+source weather_env/bin/activate
+python -m pip install -r requirements.txt
+flask --app app run --host 127.0.0.1 --port 5001
+```
+
+If `weather_env` does not exist, run `python3 -m venv weather_env` before
+activating it. Set `API_KEY` to your OpenWeatherMap key in `weather_app/.env`
+before starting Flask. Keep both terminals running to use the calculator
+and embedded weather together. See [the weather setup guide](WEATHER_WIDGET_SETUP.md)
+for detailed setup and troubleshooting.
+
+### Tests and production preview
+
+Run these commands from `mortgage_calculator`:
+
+```bash
+# Run the calculation test suite
+npm test
+
+# Build and serve the production version locally
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4173
+```
+
+Open **<http://127.0.0.1:4173/>** for the production preview, or the URL
+printed by Vite if that port is busy. The weather iframe still requires Flask
+on port 5001.
 
 ---
 
 ## 📦 Deployment
 
-Continue development on **`watson_react_migrated`**. You can run the app,
+Continue development on **`watson_iframe`**. You can run the app,
 tests, and production build locally using the commands above while staying
 on this branch.
 
@@ -176,9 +228,9 @@ The repo is configured for **GitHub Pages** on the custom domain
 The current [deployment workflow](.github/workflows/deploy.yml) runs
 automatically on pushes to `main`: it installs dependencies, runs tests,
 builds the site, and publishes **`dist/`**. Pushing to
-`watson_react_migrated` does not trigger that automatic deployment.
+`watson_iframe` does not trigger that automatic deployment.
 
-Publishing from `watson_react_migrated` would require a separate workflow
+Publishing from `watson_iframe` would require a separate workflow
 change. For current development, stay on this branch and use the local
 development or preview server.
 
@@ -212,7 +264,7 @@ development or preview server.
 
 For current development:
 
-1. Keep working on `watson_react_migrated`.
+1. Keep working on `watson_iframe`.
 2. Keep the migration's constraints: no backend, no routing, no TypeScript, no styling framework; keep the math in `src/lib/` and framework-free.
 3. Run `npm test` and `npm run build`, and verify the change in the browser (`npm run dev`).
 4. Review and commit changes on this branch.

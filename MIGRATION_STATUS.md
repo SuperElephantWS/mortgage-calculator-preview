@@ -944,3 +944,49 @@ Historical migration notes are preserved.
 Verification: npm test passes all 92 tests in 3 files; npm run build
 passes. No browser check was needed for unused configuration removal.
 Changes remain local on watson_react_migrated; no push was performed.
+
+
+---
+
+# README local run instructions (2026-10-24)
+
+Updated README.md with copyable commands to install dependencies, start Vite,
+and open the mortgage website at http://127.0.0.1:5173/. Added the separate
+Flask startup command on port 5001 for the embedded weather page, environment
+setup prerequisites, and production preview instructions. Updated README
+branch references to watson_iframe.
+
+Verification: npm run build passes; git diff --check passes. Checked the
+commands against package.json and the weather iframe URL. No browser check
+or calculation tests were needed for this documentation-only change.
+
+
+---
+
+# Single-command local launcher (2026-10-24)
+
+Added executable run.sh to start Vite on 127.0.0.1:5173 and the sibling
+weather app on 127.0.0.1:5001. It prepares missing dependencies, reports
+missing prerequisites and busy ports, and stops both child servers on
+Ctrl+C or when either server exits. README.md now leads with ./run.sh.
+
+Verification: bash -n run.sh and git diff --check pass. An isolated test
+with substitute server commands verified startup from a path containing
+spaces and cleanup of both child processes after SIGINT. A real local run
+correctly reported port 5173 already in use; the existing server was left
+running. A full live launch was not performed because of that port conflict.
+
+
+---
+
+# Launcher handles occupied Vite port (2026-10-24)
+
+Removed the fixed-port preflight for Vite and its --strictPort option.
+When 5173 is occupied, Vite selects another available port. Launcher output
+and README now direct users to the actual Local URL. The weather server
+still requires port 5001 because the iframe uses that address.
+
+Verification: bash -n run.sh and git diff --check pass. A live ./run.sh
+started Flask on 5001 and Vite on 5173. With that Vite server running,
+a second Vite process using the launcher's arguments selected 5174.
+Stopped both test sessions with Ctrl+C after verification.
