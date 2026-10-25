@@ -2,7 +2,7 @@
 
 These instructions create a separate preview at:
 
-<https://faruklmu17.github.io/mortgage-calculator-preview/>
+<https://SuperElephantWS.github.io/mortgage-calculator-preview/>
 
 The existing `mortgage_calculator` repository, `watson_iframe` branch, and
 `mortgagepayofflab.com` deployment stay as they are. All preview code changes
@@ -25,7 +25,7 @@ visitor's computer, so it does not provide public weather hosting.
 
 ## 1. Create an empty preview repository
 
-1. Sign in to GitHub as `faruklmu17`.
+1. Sign in to GitHub as `SuperElephantWS`.
 2. Create a new repository named **`mortgage-calculator-preview`**.
 3. Choose **Public** for use with GitHub Free.
 4. Leave README, license, and `.gitignore` initialization unchecked.
@@ -42,7 +42,7 @@ Run in a terminal:
 cd /Users/Watson/workWS/web_devel
 git clone --no-hardlinks --branch watson_iframe mortgage_calculator mortgage_calculator_preview
 cd mortgage_calculator_preview
-git remote set-url origin git@github.com:faruklmu17/mortgage-calculator-preview.git
+git remote set-url origin git@github.com:SuperElephantWS/mortgage-calculator-preview.git
 git switch -c main
 git remote -v
 ```
@@ -148,13 +148,13 @@ git push -u origin main
 
 The `git add public/CNAME` command records its deletion. Then on GitHub:
 
-1. Open **`faruklmu17/mortgage-calculator-preview` → Settings → Pages**.
+1. Open **`SuperElephantWS/mortgage-calculator-preview` → Settings → Pages**.
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
 3. Leave **Custom domain** empty.
 4. Open **Actions → Deploy preview to GitHub Pages → Run workflow** and
    choose `main`. If the first push already deployed successfully, skip this.
 5. Wait for the workflow to finish and open its deployment URL:
-   <https://faruklmu17.github.io/mortgage-calculator-preview/>.
+   <https://SuperElephantWS.github.io/mortgage-calculator-preview/>.
 
 The initial push may fail to deploy if Pages has not yet been enabled; run
 the workflow again after configuring it. If deployment waits for approval,

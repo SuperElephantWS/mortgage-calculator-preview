@@ -219,10 +219,10 @@ on port 5001.
 
 ## 📦 Preview deployment
 
-This copy targets `faruklmu17/mortgage-calculator-preview` on branch `main`.
+This copy targets `SuperElephantWS/mortgage-calculator-preview` on branch `main`.
 Its workflow tests and builds with `--base=/mortgage-calculator-preview/`
 before publishing `dist/` to GitHub Pages. The expected URL is
-<https://faruklmu17.github.io/mortgage-calculator-preview/>.
+<https://SuperElephantWS.github.io/mortgage-calculator-preview/>.
 
 See [deployment status](PREVIEW_DEPLOYMENT_STATUS.md) for actual progress
 and [the setup guide](GITHUB_PAGES_PREVIEW.md) for instructions. The weather
