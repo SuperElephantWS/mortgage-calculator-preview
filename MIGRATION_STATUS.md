@@ -928,3 +928,19 @@ temporary local artifacts, not new project test dependencies.
 Final automated checks: npm test passes 92/92 tests; npm run build passes;
 git diff --check passes in both repositories. WEATHER_WIDGET_SETUP.md
 records current local URLs and the deferred public-hosting step.
+
+
+---
+
+# Remove obsolete TypeScript/Playwright setup (2026-10-24)
+
+Removed tsconfig.json, playwright.config.ts, and the legacy
+tests/e2e/calculator.spec.ts page-load test. These referenced dependencies
+that are no longer installed and a static server that cannot serve the
+React/Vite source. The current JavaScript/Vitest setup remains in place.
+No active application or CI references to the removed files were found.
+Historical migration notes are preserved.
+
+Verification: npm test passes all 92 tests in 3 files; npm run build
+passes. No browser check was needed for unused configuration removal.
+Changes remain local on watson_react_migrated; no push was performed.
