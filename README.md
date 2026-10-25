@@ -167,13 +167,20 @@ Then visit the URL printed by the dev/preview server.
 
 ## 📦 Deployment
 
-The repo is set up for **GitHub Pages** on a custom domain.
+Continue development on **`watson_react_migrated`**. You can run the app,
+tests, and production build locally using the commands above while staying
+on this branch.
 
-1. Push changes to the `v1` branch — the workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs `npm ci`, `npm test`, and `npm run build`, then uploads and deploys **`dist/`** (the built site, not the source).
-2. Pull requests against `v1` run the same test/build validation but never deploy.
-3. The custom domain (`mortgagepayofflab.com`) is configured via [`public/CNAME`](public/CNAME).
+The repo is configured for **GitHub Pages** on the custom domain
+`mortgagepayofflab.com`, set through [`public/CNAME`](public/CNAME).
+The current [deployment workflow](.github/workflows/deploy.yml) runs
+automatically on pushes to `main`: it installs dependencies, runs tests,
+builds the site, and publishes **`dist/`**. Pushing to
+`watson_react_migrated` does not trigger that automatic deployment.
 
-You can also trigger a deployment manually from the GitHub **Actions** tab — manual runs are restricted to the `v1` branch.
+Publishing from `watson_react_migrated` would require a separate workflow
+change. For current development, stay on this branch and use the local
+development or preview server.
 
 ---
 
@@ -203,13 +210,12 @@ You can also trigger a deployment manually from the GitHub **Actions** tab — m
 
 ## 🤝 Contributing
 
-Contributions are welcome! To keep the project approachable:
+For current development:
 
-1. Fork the repo.
-2. Create a feature branch (`git checkout -b feat/my-idea`).
-3. Keep the migration's constraints: no backend, no routing, no TypeScript, no styling framework; keep the math in `src/lib/` and framework-free.
-4. Run `npm test` and `npm run build`, and verify the change in the browser (`npm run dev`).
-5. Open a PR against the `v1` branch (that's the one that deploys to GitHub Pages).
+1. Keep working on `watson_react_migrated`.
+2. Keep the migration's constraints: no backend, no routing, no TypeScript, no styling framework; keep the math in `src/lib/` and framework-free.
+3. Run `npm test` and `npm run build`, and verify the change in the browser (`npm run dev`).
+4. Review and commit changes on this branch.
 
 ---
 

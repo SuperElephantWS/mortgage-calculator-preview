@@ -857,3 +857,19 @@ with until Calculate Savings is clicked again. This supersedes the
 post-Step-17 rule that the toggle "refreshes with the new mode";
 calculation semantics, rounding, and `src/lib/extraMagic.js` are
 untouched. `npm test` 92/92; `npm run build` clean.
+
+
+---
+
+# Package configuration repair (2026-10-24)
+
+The latest merge mixed the legacy package configuration into the React/Vite
+manifest and lockfile, making both invalid JSON. Restored both files from
+the matching pre-merge React configuration without changing dependency
+versions. Limited Vitest discovery to `src/lib/**/*.test.js` so the legacy
+Playwright smoke test is not run by the unit-test runner.
+
+Automated verification: both JSON files parse and their root dependency
+sets match; `npm test` passes all 92 tests in 3 files; `npm run build`
+passes. No manual browser verification was performed. Work remains on
+`watson_react_migrated`; no push or deployment was performed.
