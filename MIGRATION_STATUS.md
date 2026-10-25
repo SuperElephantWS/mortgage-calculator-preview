@@ -990,3 +990,18 @@ Verification: bash -n run.sh and git diff --check pass. A live ./run.sh
 started Flask on 5001 and Vite on 5173. With that Vite server running,
 a second Vite process using the launcher's arguments selected 5174.
 Stopped both test sessions with Ctrl+C after verification.
+
+
+---
+
+# Prepare separate GitHub Pages preview (2026-10-24)
+
+Prepared this separate clone on main for mortgage-calculator-preview.
+Removed public/CNAME, fixed the relative logo link, added noindex metadata,
+and replaced the deployment workflow with the guide's project-path build.
+See PREVIEW_DEPLOYMENT_STATUS.md for completed checks and remaining work.
+
+Verification: 92 tests passed; the preview-path build passed; local HTTP
+checks passed for the main page, bundled assets, and privacy page.
+Remote creation/deployment and Render integration await account connections
+and identification of the user's existing weather service.

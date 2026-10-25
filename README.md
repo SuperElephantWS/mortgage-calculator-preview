@@ -217,22 +217,19 @@ on port 5001.
 
 ---
 
-## 📦 Deployment
+## 📦 Preview deployment
 
-Continue development on **`watson_iframe`**. You can run the app,
-tests, and production build locally using the commands above while staying
-on this branch.
+This copy targets `faruklmu17/mortgage-calculator-preview` on branch `main`.
+Its workflow tests and builds with `--base=/mortgage-calculator-preview/`
+before publishing `dist/` to GitHub Pages. The expected URL is
+<https://faruklmu17.github.io/mortgage-calculator-preview/>.
 
-The repo is configured for **GitHub Pages** on the custom domain
-`mortgagepayofflab.com`, set through [`public/CNAME`](public/CNAME).
-The current [deployment workflow](.github/workflows/deploy.yml) runs
-automatically on pushes to `main`: it installs dependencies, runs tests,
-builds the site, and publishes **`dist/`**. Pushing to
-`watson_iframe` does not trigger that automatic deployment.
+See [deployment status](PREVIEW_DEPLOYMENT_STATUS.md) for actual progress
+and [the setup guide](GITHUB_PAGES_PREVIEW.md) for instructions. The weather
+iframe still needs the existing Render service's public HTTPS URL.
 
-Publishing from `watson_iframe` would require a separate workflow
-change. For current development, stay on this branch and use the local
-development or preview server.
+The production domain belongs to the original repository; this preview
+copy has no `public/CNAME` and must use an empty Pages custom domain setting.
 
 ---
 
@@ -264,7 +261,7 @@ development or preview server.
 
 For current development:
 
-1. Keep working on `watson_iframe`.
+1. Work on `main` in this preview copy; the original repository uses `watson_iframe`.
 2. Keep the migration's constraints: no backend, no routing, no TypeScript, no styling framework; keep the math in `src/lib/` and framework-free.
 3. Run `npm test` and `npm run build`, and verify the change in the browser (`npm run dev`).
 4. Review and commit changes on this branch.
