@@ -873,3 +873,58 @@ Automated verification: both JSON files parse and their root dependency
 sets match; `npm test` passes all 92 tests in 3 files; `npm run build`
 passes. No manual browser verification was performed. Work remains on
 `watson_react_migrated`; no push or deployment was performed.
+
+
+---
+
+# Weather widget — setup step 2 (2026-10-24)
+
+Created `src/components/WeatherWidget.jsx` using the iframe markup in
+`WEATHER_WIDGET_SETUP.md`. It points to the local Flask server on port
+5001 with New Haven selected, includes an accessible title, and uses
+lazy loading. App integration remains for step 3.
+
+Automated checks: 92/92 calculation tests pass; production build passes;
+the unmounted widget also passes a direct Vite JSX compilation check.
+No browser integration check was performed because the component is not
+yet mounted. No push or deployment was performed.
+
+
+---
+
+# Weather widget — setup step 3 (2026-10-24)
+
+Imported `WeatherWidget` in `src/App.jsx` and mounted it after the two
+calculator sections so it remains visible on either tab. Existing
+calculator state and logic are unchanged.
+
+Automated verification: `npm test` passes all 92 tests in 3 files;
+`npm run build` passes with the widget included. Browser verification
+and starting the mortgage development server remain for the next steps.
+No push or deployment was performed.
+
+
+---
+
+# Weather widget — local setup steps 4–5 (2026-10-24)
+
+Started Vite at http://127.0.0.1:5173/ and left Flask running at
+http://127.0.0.1:5001/. Owner selected local-only use, so public hosting
+in step 6 is deferred. No deployment, branch change, or push was performed.
+
+Automated Chromium browser checks verified live New Haven weather inside
+the iframe, Boston city search, friendly unknown-city errors, successful
+calculations on both mortgage tabs, and preservation of the main result
+on tab switching. Checked iframe bounds, internal horizontal overflow,
+and search-button visibility at viewport widths of 390px and 320px.
+No browser JavaScript errors were reported.
+
+The first mobile inspection revealed clipping. Added a full-width React
+root in style.css and corrected box sizing and the wrapping search form
+in the weather repository template. Restarted Flask and repeated the
+browser checks successfully. The browser script and screenshot are
+temporary local artifacts, not new project test dependencies.
+
+Final automated checks: npm test passes 92/92 tests; npm run build passes;
+git diff --check passes in both repositories. WEATHER_WIDGET_SETUP.md
+records current local URLs and the deferred public-hosting step.

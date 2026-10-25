@@ -55,6 +55,11 @@ body {
     overflow-x: hidden;
 }
 
+#calculator-root {
+    width: 100%;
+    min-width: 0;
+}
+
 /* --- Header Styles --- */
 .main-header {
     width: 100%;
