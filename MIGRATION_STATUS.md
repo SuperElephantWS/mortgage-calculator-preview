@@ -1005,3 +1005,18 @@ Verification: 92 tests passed; the preview-path build passed; local HTTP
 checks passed for the main page, bundled assets, and privacy page.
 Remote creation/deployment and Render integration await account connections
 and identification of the user's existing weather service.
+
+
+---
+
+# Connect preview to public weather service (2026-10-24)
+
+Replaced the preview iframe's localhost URL with the user's Render service,
+https://weather-app-sjqi.onrender.com/, and updated preview privacy text.
+New Haven returned HTTP 200 and weather data; Boston search also returned
+weather data. No response headers blocking iframe embedding were present.
+The preview-path production build and git diff --check passed.
+
+GitHub publishing remains pending: git ls-remote for the preview repository
+returned Repository not found. Browser embedding verification is pending.
+The original mortgage_calculator and weather_app source remain unchanged.

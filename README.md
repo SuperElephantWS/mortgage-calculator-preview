@@ -226,7 +226,7 @@ before publishing `dist/` to GitHub Pages. The expected URL is
 
 See [deployment status](PREVIEW_DEPLOYMENT_STATUS.md) for actual progress
 and [the setup guide](GITHUB_PAGES_PREVIEW.md) for instructions. The weather
-iframe still needs the existing Render service's public HTTPS URL.
+iframe uses <https://weather-app-sjqi.onrender.com/>.
 
 The production domain belongs to the original repository; this preview
 copy has no `public/CNAME` and must use an empty Pages custom domain setting.

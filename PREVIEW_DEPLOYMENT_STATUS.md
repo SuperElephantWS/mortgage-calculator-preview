@@ -23,19 +23,26 @@ Prepared on October 24, 2026. **Not deployed yet.**
 - Noindex metadata and relative logo link verified in the served HTML.
 - `git diff --check`: passed.
 
+## Hosted weather connected (October 24, 2026)
+
+- User supplied https://weather-app-sjqi.onrender.com/.
+- Confirmed HTTP 200, live New Haven weather, and successful Boston search.
+- The response has no X-Frame-Options or Content-Security-Policy header
+  blocking the iframe; browser embedding still needs a browser check.
+- Updated the preview iframe to the hosted HTTPS service.
+- Updated the privacy page to describe Render and OpenWeatherMap requests.
+- Preview-path production build and git diff --check passed.
+
 ## Remaining
 
-1. Connect GitHub so the empty public preview repository can be created,
-   the prepared commit pushed, and Pages enabled with GitHub Actions.
-2. Connect Render and identify the existing weather service. The user chose
-   an existing service; do not create a replacement or select a paid plan.
-3. Inspect that service's repository, branch, build/start commands and API_KEY
-   configuration. Deploy the existing weather app if needed.
-4. Replace the preview iframe's localhost URL with the real Render HTTPS URL
-   and update the preview privacy page to describe public weather hosting.
-5. Push the integration, verify the Pages deployment and live weather search,
-   and perform desktop/mobile browser checks.
+1. Create or grant access to `faruklmu17/mortgage-calculator-preview`.
+   `git ls-remote origin` returned Repository not found with the current
+   SSH credentials. No GitHub management connection is available to create it.
+2. Push prepared commits and enable GitHub Pages using GitHub Actions.
+3. Verify the workflow, the public preview, and desktop/mobile browser checks,
+   including embedded weather and unknown-city search handling.
 
-No GitHub repository, Pages site, or Render resource has been created or
-modified in this setup so far. The expected preview URL is not a confirmed
-live deployment. No production configuration or DNS has been changed.
+No GitHub repository or Pages site has been created or modified by this setup.
+The expected preview URL is not a confirmed live deployment. The weather
+service was created by the user; no Render settings were changed here.
+No production configuration or DNS has been changed.
