@@ -228,6 +228,12 @@ See [deployment status](PREVIEW_DEPLOYMENT_STATUS.md) for actual progress
 and [the setup guide](GITHUB_PAGES_PREVIEW.md) for instructions. The weather
 iframe uses <https://weather-app-sjqi.onrender.com/>.
 
+The weather widget requests each visitor's browser location permission and
+uses their coordinates for local weather. City search remains available if
+permission is denied or location cannot be determined. The matching location
+changes in the sibling `weather_app` repository must also be released; removing
+the iframe's fixed city alone does not update the hosted weather server.
+
 The production domain belongs to the original repository; this preview
 copy has no `public/CNAME` and must use an empty Pages custom domain setting.
 

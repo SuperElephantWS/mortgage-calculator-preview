@@ -6,7 +6,8 @@ export default function WeatherWidget() {
     >
       <h2 id="weather-heading">Explore the weather</h2>
       <iframe
-        src="https://weather-app-sjqi.onrender.com/?city=New%20Haven"
+        src="https://weather-app-sjqi.onrender.com/"
+        allow="geolocation"
         title="City weather"
         loading="lazy"
         style={{

@@ -1020,3 +1020,32 @@ The preview-path production build and git diff --check passed.
 GitHub publishing remains pending: git ls-remote for the preview repository
 returned Repository not found. Browser embedding verification is pending.
 The original mortgage_calculator and weather_app source remain unchanged.
+
+---
+
+# Fix visitor weather location (2026-10-27)
+
+Investigation confirmed the published Render page displays New Haven by
+default. Both WeatherWidget.jsx and the sibling weather_app/app.py hardcoded
+that city; neither detected visitor location.
+
+Removed the iframe's city parameter and delegated geolocation permission.
+Updated the existing Flask weather app to request browser location only on
+an initial visit, validate latitude/longitude, and query OpenWeatherMap by
+coordinates. City search takes precedence and remains available for denied,
+unsupported, or timed-out detection. A late location response does not
+interrupt a city search. No API keys are exposed to the browser. Updated the
+privacy page and setup notes. Mortgage changes are on branch watson.
+
+Automated verification: npm test passed (92 tests); npm run build --
+--base=/mortgage-calculator-preview/ passed. In weather_app, python -B -m
+unittest discover -v passed (7 tests), and node --test location.test.cjs
+passed (4 tests). Weather provider responses and browser APIs are mocked
+in these regression tests. Weather repository and changed code/privacy/status
+files pass git diff --check. The full mortgage diff check reports existing
+trailing whitespace on README.md line 10, present before this task.
+
+Manual verification: browser permission prompts and live coordinate-based
+weather have not been tested. The published page was inspected with an HTTP
+GET to confirm the existing New Haven default. No push or deployment was
+performed. Both repositories need release before the published site changes.
