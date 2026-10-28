@@ -21,8 +21,7 @@
 // Typing in the fields and the main → magic tab-sync prefill the inputs
 // WITHOUT committing, so no value appears before the first button click.
 // (The original also recalculated on every `input` event; the owner
-// asked for the main-tab-style click-to-calculate UX instead — see
-// MIGRATION_STATUS.md.)
+// asked for the main-tab-style click-to-calculate UX instead.)
 //
 // DOM behavior preserved from Step 8 (and from original script.js):
 //   - Same DOM structure, CSS classes, IDs, labels, aria attributes.

@@ -7,7 +7,7 @@
 ---
 
 ## ✨ Features
-
+ 
 ### 🧮 Monthly Payment Calculator
 - Estimate your total **PITI** (Principal, Interest, Taxes, Insurance) + HOA fees.
 - **Down payment** toggle — enter as a flat dollar amount **or** a percentage.
@@ -99,9 +99,6 @@ Node.js **20.19+ or 22.12+** (Vite 8 engine requirement). Node 22 LTS is recomme
 │   └── googleb4f539193a03794c.html # Google Search Console verification
 ├── vite.config.js
 ├── package.json / package-lock.json
-├── MIGRATION_PLAN.md           # History: the 18-step React migration
-├── MIGRATION_STATUS.md         # History: step-by-step results
-├── MIGRATION_AUDIT.md          # History: pre-migration behavior audit
 ├── BASELINE_CASES.md           # History: baseline behavior reference
 └── .github/workflows/deploy.yml # CI: test + build + Pages deployment
 ```
@@ -145,32 +142,9 @@ All of this lives in `src/lib/` (see the file table above) and is pinned by the 
 
 ## 🚀 Run Locally
 
-From the `mortgage_calculator` directory, run:
+From the project directory, start the mortgage website:
 
 ```bash
-./run.sh
-```
-
-Open the **Local** URL printed by Vite (usually **<http://127.0.0.1:5173/>**).
-If port 5173 is busy, Vite automatically selects the next available port,
-such as 5174. The script starts both Vite and the embedded Flask weather
-server. Press **Ctrl+C** to stop both.
-
-Requires Node.js (see Requirements above), npm, Python 3, and the sibling
-`weather_app` directory. On first use, it installs missing Node dependencies
-and creates the weather Python environment and installs its dependencies;
-these downloads require internet access. For live weather, set
-`API_KEY=your_openweathermap_key` in `weather_app/.env`.
-
-The weather iframe requires port **5001**. If that port is already in use,
-stop the existing weather server before running the script.
-
-### Manual startup
-
-From the `web_devel` workspace directory, start the mortgage website:
-
-```bash
-cd mortgage_calculator
 npm ci
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
@@ -178,11 +152,14 @@ npm run dev -- --host 127.0.0.1 --port 5173
 Open **<http://127.0.0.1:5173/>** in your browser. If port 5173 is already
 in use, open the URL printed by Vite. Leave the terminal running; press
 **Ctrl+C** to stop the server. On later runs, you only need the `npm run dev`
-command from the `mortgage_calculator` directory.
+command from the project directory. The weather iframe uses the hosted Render
+service, so a local Python server is optional.
 
-### Start the embedded weather page
+### Test the weather server locally (optional)
 
-The weather iframe requires a separate Flask server on port **5001**.
+To test local weather changes, temporarily set the iframe URL in
+`src/components/WeatherWidget.jsx` to `http://127.0.0.1:5001/`, keeping
+`allow="geolocation"`. Start a separate Flask server on port **5001**.
 In a **second terminal**, starting from the `web_devel` workspace directory:
 
 ```bash
@@ -196,11 +173,12 @@ If `weather_env` does not exist, run `python3 -m venv weather_env` before
 activating it. Set `API_KEY` to your OpenWeatherMap key in `weather_app/.env`
 before starting Flask. Keep both terminals running to use the calculator
 and embedded weather together. See [the weather setup guide](WEATHER_WIDGET_SETUP.md)
-for detailed setup and troubleshooting.
+for detailed setup and troubleshooting. Restore the hosted Render iframe URL
+after testing.
 
 ### Tests and production preview
 
-Run these commands from `mortgage_calculator`:
+Run these commands from the project directory:
 
 ```bash
 # Run the calculation test suite
@@ -212,8 +190,8 @@ npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
 Open **<http://127.0.0.1:4173/>** for the production preview, or the URL
-printed by Vite if that port is busy. The weather iframe still requires Flask
-on port 5001.
+printed by Vite if that port is busy. The weather iframe uses the hosted
+Render service unless you changed its URL for local weather testing.
 
 ---
 

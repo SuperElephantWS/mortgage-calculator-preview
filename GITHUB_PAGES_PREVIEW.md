@@ -16,9 +16,8 @@ This guide has not created or deployed any remote resources.
 | React calculator and static pages | GitHub Pages, built into `dist/` |
 | Flask weather app | Separate Python web host, such as Render |
 | OpenWeatherMap `API_KEY` | Weather host environment settings |
-| `run.sh` | Local development only |
 
-GitHub Pages cannot run Flask or `run.sh`. You can test the calculator first
+GitHub Pages cannot run Flask. You can test the calculator first
 without hosting weather; the weather iframe will remain unavailable until
 you complete step 6. The current iframe URL, `127.0.0.1:5001`, points at the
 visitor's computer, so it does not provide public weather hosting.
@@ -215,7 +214,7 @@ plan after reviewing the current pricing and limits shown by Render.
    git push origin main
    ```
 
-This triggers a new preview deployment. Your computer and `run.sh` can be off
+This triggers a new preview deployment. Your computer can be off
 when testing the publicly hosted calculator and weather service.
 
 ## 7. Check the deployed page

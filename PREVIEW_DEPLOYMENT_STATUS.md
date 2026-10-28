@@ -1,6 +1,6 @@
 # Preview deployment status
 
-Prepared on October 24, 2026. **Not deployed yet.**
+Prepared on October 24, 2026. **Code pushed; GitHub Pages setup required.**
 
 ## Completed locally
 
@@ -39,11 +39,23 @@ The user supplied https://github.com/SuperElephantWS/mortgage-calculator-preview
 SSH access succeeded and the repository was empty. Updated origin and preview
 URLs for SuperElephantWS. The repository path and build base remain unchanged.
 
+## Remote push and first workflow
+
+Pushed main to https://github.com/SuperElephantWS/mortgage-calculator-preview.
+GitHub Actions run 40152447833 passed dependency installation, all calculation
+tests, and the preview build. The configure-pages step failed because no
+GitHub Pages site is enabled for the repository (API returned Not Found).
+
+Workflow: https://github.com/SuperElephantWS/mortgage-calculator-preview/actions/runs/40152447833
+
 ## Remaining
 
-1. Push prepared commits and enable GitHub Pages using GitHub Actions.
-2. Verify the workflow, the public preview, and desktop/mobile browser checks,
-   including embedded weather and unknown-city search handling.
+1. In repository Settings > Pages, set Source to GitHub Actions; leave the
+   custom domain empty. This requires repository settings access, which is
+   not available through the current SSH-only Git connection.
+2. Re-run failed jobs on the workflow above.
+3. Verify the public preview and desktop/mobile browser checks, including
+   embedded weather and unknown-city search handling.
 
 Expected preview URL: https://superelephantws.github.io/mortgage-calculator-preview/.
 A successful deployment has not yet been confirmed. The weather service was

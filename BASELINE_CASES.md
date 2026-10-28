@@ -129,7 +129,7 @@ total interest. If B4/B5 ever show interest saved ≤ 0 *and* a longer payoff, t
 
 ## F. Suspected bugs / behaviors requiring an **explicit decision** (do not fix in Step 4)
 
-These come from the Step 3 audit (MIGRATION_AUDIT.md §15) and are surfaced here only so Step 7–10 can
+These come from the original behavior audit and are surfaced here only so Step 7–10 can
 encode the *decided* behavior rather than silently copy the current one:
 
 | # | Case it affects | Question to decide |

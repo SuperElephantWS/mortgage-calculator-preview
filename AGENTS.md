@@ -40,5 +40,5 @@ preserving existing behavior and appearance.
 - Run relevant tests and the production build.
 - Report actual command results.
 - Separate automated checks from manual checks.
-- Update MIGRATION_STATUS.md after each step.
+- Report verification results in the task response.
 
