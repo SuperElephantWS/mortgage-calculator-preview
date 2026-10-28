@@ -204,12 +204,18 @@ body {
     cursor: pointer;
 }
 
-/* Always-visible weather strip between the menu and calculator. */
-.weather-toolbar {
+/* Keep weather and both calculator tabs aligned at every viewport width. */
+.weather-toolbar,
+.calculator-wrapper {
     width: 100%;
     max-width: 1200px;
-    margin: 20px auto 0;
+    margin-inline: auto;
     padding: 0 20px;
+}
+
+/* Always-visible weather strip between the menu and calculator. */
+.weather-toolbar {
+    margin-top: 20px;
 }
 
 .weather-frame {
@@ -237,8 +243,6 @@ body {
 
 /* --- Layout Wrapper (adjusted) --- */
 .calculator-wrapper {
-    width: 100%;
-    max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -247,7 +251,6 @@ body {
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     margin-top: 40px;
     /* added margin due to sticky header */
-    padding: 0 20px;
 }
 
 @keyframes fadeInUp {
