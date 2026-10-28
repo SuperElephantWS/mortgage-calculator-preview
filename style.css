@@ -204,77 +204,35 @@ body {
     cursor: pointer;
 }
 
-/* Weather stays secondary; expand the existing app when needed. */
+/* Always-visible weather strip between the menu and calculator. */
 .weather-toolbar {
     width: 100%;
     max-width: 1200px;
-    margin: 16px auto -20px;
+    margin: 20px auto 0;
     padding: 0 20px;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 20;
-}
-
-.weather-widget {
-    position: relative;
-}
-
-.weather-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border: 1px solid var(--glass-border);
-    border-radius: 99px;
-    background: var(--input-bg);
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    cursor: pointer;
-    list-style: none;
-}
-
-.weather-toggle::-webkit-details-marker {
-    display: none;
-}
-
-.weather-toggle:hover,
-.weather-widget[open] > .weather-toggle {
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.weather-toggle:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 4px;
-}
-
-.weather-chevron {
-    font-size: 0.65rem;
-}
-
-.weather-widget[open] .weather-chevron {
-    transform: rotate(180deg);
-}
-
-.weather-panel {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    width: min(360px, calc(100vw - 40px));
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    background: #1e3c72;
-    box-shadow: var(--glass-shadow);
-    overflow: hidden;
 }
 
 .weather-frame {
     display: block;
     width: 100%;
-    height: min(600px, calc(100vh - 160px));
-    height: min(600px, calc(100dvh - 160px));
-    border: 0;
+    height: 180px;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--glass);
+    color-scheme: dark;
+}
+
+.weather-toolbar ~ .calculator-wrapper {
+    margin-top: 20px;
+}
+
+/* Fallback sizes until the embedded app reports its content height. */
+@media (max-width: 960px) {
+    .weather-frame { height: 260px; }
+}
+
+@media (max-width: 640px) {
+    .weather-frame { height: 380px; }
 }
 
 /* --- Layout Wrapper (adjusted) --- */

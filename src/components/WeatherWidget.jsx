@@ -1,22 +1,35 @@
+import { useEffect, useRef, useState } from 'react';
+
+const WEATHER_ORIGIN = 'https://weather-app-sjqi.onrender.com';
+
 export default function WeatherWidget() {
+  const frameRef = useRef(null);
+  const [frameHeight, setFrameHeight] = useState(null);
+
+  useEffect(() => {
+    function handleResize(event) {
+      if (event.origin !== WEATHER_ORIGIN
+          || event.source !== frameRef.current?.contentWindow
+          || event.data?.type !== 'weather:resize') return;
+      const height = event.data.height;
+      if (Number.isFinite(height) && height >= 80 && height <= 2000) {
+        setFrameHeight(Math.ceil(height) + 2);
+      }
+    }
+    window.addEventListener('message', handleResize);
+    return () => window.removeEventListener('message', handleResize);
+  }, []);
+
   return (
     <aside className="weather-toolbar" aria-label="Local weather">
-      <details className="weather-widget">
-        <summary className="weather-toggle">
-          <i className="fas fa-cloud-sun" aria-hidden="true" />
-          Weather
-          <i className="fas fa-chevron-down weather-chevron" aria-hidden="true" />
-        </summary>
-        <div className="weather-panel">
-          <iframe
-            className="weather-frame"
-            src="https://weather-app-sjqi.onrender.com/"
-            allow="geolocation"
-            title="City weather"
-            loading="lazy"
-          />
-        </div>
-      </details>
+      <iframe
+        ref={frameRef}
+        className="weather-frame"
+        src={`${WEATHER_ORIGIN}/?layout=strip`}
+        allow="geolocation"
+        title="Local weather and city search"
+        style={frameHeight === null ? undefined : { height: frameHeight }}
+      />
     </aside>
   );
 }

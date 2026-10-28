@@ -157,8 +157,8 @@ service, so a local Python server is optional.
 
 ### Test the weather server locally (optional)
 
-To test local weather changes, temporarily set the iframe URL in
-`src/components/WeatherWidget.jsx` to `http://127.0.0.1:5001/`, keeping
+To test local weather changes, temporarily set `WEATHER_ORIGIN` in
+`src/components/WeatherWidget.jsx` to `http://127.0.0.1:5001`, keeping
 `allow="geolocation"`. Start a separate Flask server on port **5001**.
 In a **second terminal**, starting from the `web_devel` workspace directory:
 
@@ -211,6 +211,12 @@ uses their coordinates for local weather. City search remains available if
 permission is denied or location cannot be determined. The matching location
 changes in the sibling `weather_app` repository must also be released; removing
 the iframe's fixed city alone does not update the hosted weather server.
+
+The widget uses `?layout=strip` to show an always-visible horizontal weather
+summary between the menu and calculators. It includes conditions, temperature,
+feels-like temperature, humidity, min/max, wind, and city search. The weather app
+reports its content height so the strip grows as details wrap on smaller screens.
+This layout also requires the matching changes in the weather repository.
 
 The production domain belongs to the original repository; this preview
 copy has no `public/CNAME` and must use an empty Pages custom domain setting.
